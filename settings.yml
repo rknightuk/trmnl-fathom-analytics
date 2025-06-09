@@ -1,0 +1,42 @@
+---
+strategy: polling
+no_screen_padding: 'no'
+dark_mode: 'no'
+static_data: ''
+polling_verb: get
+polling_url: "https://api.usefathom.com/v1/aggregations?entity=pageview&entity_id={{ site_id }}&aggregates=pageviews,uniques,visits&date_from={{ 'now' | date: '%s' | minus: lookback_period | date: '%Y-%m-%dT%H:%M:%S.000Z' }}\r\nhttps://api.usefathom.com/v1/aggregations?entity=pageview&entity_id={{ site_id }}&aggregates=pageviews&date_from={{ 'now' | date: '%s' | minus: lookback_period | date: '%Y-%m-%dT%H:%M:%S.000Z' }}&field_grouping=pathname&sort_by=pageviews:desc&limit=10\r\nhttps://api.usefathom.com/v1/aggregations?entity=pageview&entity_id={{ site_id }}&aggregates=pageviews&date_from={{ 'now' | date: '%s' | minus: lookback_period | date: '%Y-%m-%dT%H:%M:%S.000Z' }}&date_grouping=day&sort_by=timestamp:asc"
+polling_headers: authorization=bearer {{ api_key }}
+id: 89064
+custom_fields:
+- keyname: api_key
+  field_type: string
+  name: API Key
+  description: Get one from https://app.usefathom.com/api
+- keyname: site_id
+  field_type: string
+  name: Site ID
+  description: Get this from https://app.usefathom.com/sites
+- keyname: lookback_period
+  field_type: select
+  options:
+  - 7 days: 604800
+  - 14 days: 1209600
+  - 30 days: 2592000
+  default: 604800
+  name: Lookback Period
+- keyname: show_chart
+  field_type: select
+  options:
+  - Show top pages: false
+  - Show chart: true
+  default: false
+  name: Show top pages or visits chart
+  description: Only affects half-size screens
+- keyname: _doesnt_matter
+  name: About This Plugin
+  field_type: author_bio
+  description: Fathom Analytics plugin
+  github_url: https://github.com/rknightuk/trmnl-fathom-analytics
+  learn_more_url: https://rknight.me
+name: Fathom Analytics
+refresh_interval: 60

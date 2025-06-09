@@ -1,0 +1,48 @@
+<div class="layout layout--col gap--space-between">
+  <div class="grid h-full">
+    <div class="col--span-3 col gap--space-between">
+      <div class="grid grid--cols-2 gap--[9px]" data-adjust-grid-gaps="false">
+        <div class="item">
+          <div class="meta"></div>
+          <div class="content">
+            <span class="value value--tnums">{{ IDX_0.data[0].pageviews }}</span>
+            <span class="label">Pageviews</span>
+          </div>
+        </div>
+        <div class="item">
+          <div class="meta"></div>
+          <div class="content">
+            <span class="value value--tnums">{{ IDX_0.data[0].uniques }}</span>
+            <span class="label">Visitors</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col--span-3 col gap--space-between">
+      {% if trmnl.plugin_settings.custom_fields_values.show_chart == 'true' %}
+      <div id="chart-123" style="width: 100%"></div>
+
+      {% render "chart_script", data: IDX_2 %}
+      {% else %}
+      <table class="table table--condensed">
+        <thead>
+          <tr>
+            <th><span class="label label--small">Page</span></th>
+            <th><span class="label label--small">Views</span></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for page in IDX_1.data limit:5 %}
+          <tr>
+            <td><span class="label">{{ page.pathname | slice: 0, 32 }}</span></td>
+            <td><span class="label" data-value-format="true">{{ page.pageviews }}</span></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+{% render "title_bar", trmnl: trmnl %}

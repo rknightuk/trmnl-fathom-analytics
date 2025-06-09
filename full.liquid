@@ -1,0 +1,44 @@
+<div class="view">
+  <div class="layout">
+    <div class="columns">
+      <div class="column">
+        <span class="label">Views and Visits</span>
+        <div class="item" style="margin-bottom: 20px;">
+          <div class="meta"></div>
+          <div class="content">
+            <span class="value value--tnums">{{ IDX_0.data[0].pageviews }}</span>
+            <span class="label">Pageviews</span>
+          </div>
+          <div class="meta"></div>
+          <div class="content">
+            <span class="value value--tnums">{{ IDX_0.data[0].uniques }}</span>
+            <span class="label">Visitors</span>
+          </div>
+        </div>
+        <div id="chart-123" style="width: 100%"></div>
+      </div>
+      <div class="column">
+        <span class="label">Top Pages</span>
+        <table class="table table--condensed">
+          <thead>
+            <tr>
+              <th><span class="label label--small">Page</span></th>
+              <th><span class="label label--small">Views</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            {% for page in IDX_1.data limit:10 %}
+            <tr>
+              <td><span class="label">{{ page.pathname | slice: 0, 32 }}</span></td>
+              <td><span class="label" data-value-format="true">{{ page.pageviews }}</span></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  {% render "title_bar", trmnl: trmnl %}
+</div>
+
+{% render "chart_script", data: IDX_2 %}

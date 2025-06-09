@@ -1,0 +1,20 @@
+<div class="layout layout--col gap--space-between">
+  <div class="grid grid--cols-2">
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums">{{ IDX_0.data[0].uniques }}</span>
+            <span class="label">Visitors</span>
+      </div>
+    </div>
+    <div class="item">
+      <div class="meta"></div>
+      <div class="content">
+        <span class="value value--tnums">{{ IDX_0.data[0].pageviews }}</span>
+            <span class="label">Pageviews</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% render "title_bar", trmnl: trmnl %}
