@@ -8,14 +8,20 @@ polling_url: "https://api.usefathom.com/v1/aggregations?entity=pageview&entity_i
 polling_headers: authorization=bearer {{ api_key }}
 id: 89064
 custom_fields:
+- keyname: _doesnt_matter
+  name: About This Plugin
+  field_type: author_bio
+  description: Fathom Analytics plugin
+  github_url: https://github.com/rknightuk/trmnl-fathom-analytics
+  learn_more_url: https://rknight.me
 - keyname: api_key
   field_type: string
   name: API Key
-  description: Get one from https://app.usefathom.com/api
+  description: Get one from <a href="https://app.usefathom.com/api" target="_blank" class="underline">API settings</a>
 - keyname: site_id
   field_type: string
   name: Site ID
-  description: Get this from https://app.usefathom.com/sites
+  description: Get this from <a href="https://app.usefathom.com/sites" target="_blank" class="underline">Sites</a>
 - keyname: lookback_period
   field_type: select
   options:
@@ -32,11 +38,5 @@ custom_fields:
   default: false
   name: Show top pages or visits chart
   description: Only affects half-size screens
-- keyname: _doesnt_matter
-  name: About This Plugin
-  field_type: author_bio
-  description: Fathom Analytics plugin
-  github_url: https://github.com/rknightuk/trmnl-fathom-analytics
-  learn_more_url: https://rknight.me
 name: Fathom Analytics
 refresh_interval: 60
